@@ -6,8 +6,10 @@ export const settings: {
     loseText: string,
     drawText: string,
     inputText: string,
+    footer: string,
 } = {
     appName: 'Rock Paper Scissors',
+    footer: 'This is the footer',
     userName: 'Player',
     aiName: 'Robot',
     winText: 'Well played',

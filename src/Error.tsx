@@ -4,10 +4,14 @@ import React from "react";
 import './styles/App.css';
 import { settings } from './config/defaults'
 
-const Footer: React.FC = () => {
+type ErrProps = {
+    message: string;
+}
+
+const Error: React.FC<ErrProps> = ({message}) => {
     return(
-        <div className='App-footer' >{settings.footer}</div>
+        <div className='App-main' >{message}</div>
     );
 }
 
-export default Footer;
+export default Error;

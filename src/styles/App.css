@@ -22,16 +22,20 @@
   background-color: #282c34;
   min-height: 10vh;
   color: white;
+  width: 100%;
 }
 
 .App-main {
   background-color: aquamarine;
   min-height: 80vh;
+  width: 100%;
+
 }
 
 .App-footer {
   min-height: 10vh;
   background-color: red;
+  width: 100%;
 }
 
 .App-link {
