@@ -4,7 +4,9 @@ import { settings } from './config/defaults'
 
 const Header: React.FC = () => {
     return(
-        <div className='App-header' >{settings.appName}</div>
+        <div className='App-header' data-testid='header'>
+            {settings.appName}
+        </div>
     );
 }
 

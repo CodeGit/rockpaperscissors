@@ -4,7 +4,9 @@ import { settings } from './config/defaults'
 
 const Help: React.FC = () => {
     return(
-        <div className='App-main' >Help</div>
+        <div className='App-main' data-testid='help'>
+            <h1>Help</h1>
+        </div>
     );
 }
 

@@ -6,7 +6,9 @@ import { settings } from './config/defaults'
 
 const Footer: React.FC = () => {
     return(
-        <div className='App-footer' >{settings.footer}</div>
+        <div className='App-footer' data-testid='footer'>
+            {settings.footer}
+        </div>
     );
 }
 
