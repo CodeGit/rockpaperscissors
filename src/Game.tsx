@@ -1,10 +1,12 @@
+/** @jsxImportSource @emotion/react */
 import React from "react";
-import './styles/App.css';
+
+import mainCss from "./MainStyle";
 import { settings } from './config/defaults'
 
 const Game: React.FC = () => {
     return(
-        <div className="App-main" data-testid='game'>
+        <div css={mainCss} data-testid='game'>
             <h1>Game</h1>
         </div>
     );

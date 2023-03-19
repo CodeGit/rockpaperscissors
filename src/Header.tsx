@@ -1,10 +1,18 @@
-import React from 'react';
-import './styles/App.css';
+/** @jsxImportSource @emotion/react */
+import { css, jsx } from '@emotion/react';
+
 import { settings } from './config/defaults'
+
+const styles = css({
+    backgroundColor: 'darkolivegreen',
+    minHeight: '10vh',
+    color: 'white',
+    width: '100%'
+});
 
 const Header: React.FC = () => {
     return(
-        <div className='App-header' data-testid='header'>
+        <div css={styles} data-testid='header'>
             {settings.appName}
         </div>
     );
