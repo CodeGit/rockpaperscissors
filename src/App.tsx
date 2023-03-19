@@ -8,7 +8,7 @@ import { css, jsx } from '@emotion/react';
 import { settings } from './config/defaults'
 import Footer from './Footer';
 import Header from './Header';
-import MenuBar from './MenuBar';
+import RPSAppBar from './MenuBar';
 import Game from './Game';
 import Results from './Results';
 import Help from './Help';
@@ -27,7 +27,7 @@ const App = () => {
   return (
     <div css={styles}>
       <Header />
-      <MenuBar />
+      <RPSAppBar />
       <Routes>
         <Route path="/" element={ <Game /> }/>
         <Route path="/game" element={ <Game /> }/>
