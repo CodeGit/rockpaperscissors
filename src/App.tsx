@@ -19,7 +19,7 @@ const styles = css({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'flex-start',
-  fontSize: '18px'
+  fontSize: 'clamp(1rem, 2rem, 4rem)',
 });
 
 const App = () => {
