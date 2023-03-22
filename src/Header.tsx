@@ -5,7 +5,7 @@ import { settings } from './config/defaults'
 
 const styles = css({
     backgroundColor: 'darkolivegreen',
-    minHeight: '10vh',
+    minHeight: '5vh',
     color: 'white',
     width: '100%'
 });
