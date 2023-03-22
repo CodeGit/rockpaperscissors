@@ -38,7 +38,12 @@ const RPSAppBar: React.FC = () => {
                     anchorEl={anchorElement}
                 >
                     {
-                        gameModes.map((mode) => {return <MenuItem><Button component={Link} to={`/game/${mode.code}`}>{mode.desc}</Button></MenuItem>})
+                        gameModes.map((mode) => {
+                            return (
+                                <MenuItem>
+                                    <Button component={Link} to={`/game/${mode.code}`}>{mode.desc}</Button>
+                                </MenuItem>
+                            )})
                     }
                 </Menu>
                 <MenuItem><IconButton component={Link} to="/results">Results</IconButton></MenuItem>

@@ -37,8 +37,9 @@ const App = () => {
         <Route path="/help" element={ <ContentContainer><Help /></ContentContainer> }/>
         {
           gameModes.map((mode) => { 
-            return <Route path={`/game/${mode.code}`} element={ <ContentContainer><Game mode={mode}/></ContentContainer> }/> 
-          })
+            return(
+              <Route path={`/game/${mode.code}`} element={ <ContentContainer><Game mode={mode}/></ContentContainer> }/> 
+          )})
         }
       </Routes>
       <Footer />
