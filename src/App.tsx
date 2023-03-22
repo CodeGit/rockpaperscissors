@@ -24,25 +24,29 @@ const styles = css({
   fontSize: 'clamp(1rem, 2rem, 4rem)',
 });
 
+export const GameModeContext = React.createContext(gameModes[0])
+
 const App = () => {
 
   return (
     <div css={styles}>
-      <Header />
-      <RPSAppBar />
-      <Routes>
-        <Route path="/" element={ <ContentContainer><Game /></ContentContainer> }/>
-        <Route path="/game" element={ <ContentContainer><Game /></ContentContainer> }/>
-        <Route path="/results" element={ <ContentContainer><Results /></ContentContainer> }/>
-        <Route path="/help" element={ <ContentContainer><Help /></ContentContainer> }/>
-        {
-          gameModes.map((mode) => { 
-            return(
-              <Route path={`/game/${mode.code}`} element={ <ContentContainer><Game mode={mode}/></ContentContainer> }/> 
-          )})
-        }
-      </Routes>
-      <Footer />
+      <GameModeContext.Provider value={gameModes[0]}>
+        <Header />
+        <RPSAppBar />
+        <Routes>
+          <Route path="/" element={ <ContentContainer><Game /></ContentContainer> }/>
+          <Route path="/game" element={ <ContentContainer><Game /></ContentContainer> }/>
+          <Route path="/results" element={ <ContentContainer><Results /></ContentContainer> }/>
+          <Route path="/help" element={ <ContentContainer><Help /></ContentContainer> }/>
+          {
+            gameModes.map((mode) => { 
+              return(
+                <Route path={`/game/${mode.code}`} element={ <ContentContainer><Game mode={mode}/></ContentContainer> }/> 
+            )})
+          }
+        </Routes>
+        <Footer />
+      </GameModeContext.Provider>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css, jsx } from '@emotion/react';
-
-import { settings } from './config/defaults'
+import { useContext } from 'react';
+import { GameModeContext } from './App';
 
 const styles = css({
     backgroundColor: 'darkolivegreen',
@@ -11,9 +11,11 @@ const styles = css({
 });
 
 const Header: React.FC = () => {
+    const mode = useContext(GameModeContext);
+
     return(
         <div css={styles} data-testid='header'>
-            {settings.appName}
+                {mode.desc}
         </div>
     );
 }

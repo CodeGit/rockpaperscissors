@@ -1,12 +1,11 @@
 /** @jsxImportSource @emotion/react */
+import { gameType, gameModes } from './gameType';
 
-import { settings } from './config/defaults'
-import { gameType } from './gameType';
 
 const Game: React.FC<{mode?: gameType}> = ({mode}) => {
     return(
         <div data-testid='game'>
-            <h1>Game</h1>
+            <h1>{mode ? mode.desc : gameModes[0].desc}</h1>
         </div>
     );
 }
