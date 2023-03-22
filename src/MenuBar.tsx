@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { css, jsx } from '@emotion/react';
 import { AppBar, Button, IconButton, Menu, MenuItem, Toolbar, Typography } from "@mui/material";
 import { settings } from './config/defaults'
+import { gameModes } from "./gameType";
 
 const styles = css({
     backgroundColor: 'whitesmoke',
@@ -36,8 +37,9 @@ const RPSAppBar: React.FC = () => {
                     onClose={handlePlayMenuClose}
                     anchorEl={anchorElement}
                 >
-                    <MenuItem><Button component={Link} to="/game">Rock Paper Scissors</Button></MenuItem>
-                    <MenuItem><Button component={Link} to="/game">Rock Paper Scissors Lizard Spock</Button></MenuItem>
+                    {
+                        gameModes.map((mode) => {return <MenuItem><Button component={Link} to={`/game/${mode.code}`}>{mode.desc}</Button></MenuItem>})
+                    }
                 </Menu>
                 <MenuItem><IconButton component={Link} to="/results">Results</IconButton></MenuItem>
                 <MenuItem><IconButton component={Link} to="/help">Help</IconButton></MenuItem>

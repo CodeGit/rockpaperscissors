@@ -12,6 +12,8 @@ import RPSAppBar from './MenuBar';
 import Game from './Game';
 import Results from './Results';
 import Help from './Help';
+import ContentContainer from './Content';
+import { gameModes } from './gameType';
 
 const styles = css({
   textAlign: 'center',
@@ -29,10 +31,15 @@ const App = () => {
       <Header />
       <RPSAppBar />
       <Routes>
-        <Route path="/" element={ <Game /> }/>
-        <Route path="/game" element={ <Game /> }/>
-        <Route path="/results" element={ <Results /> }/>
-        <Route path="/help" element={ <Help /> }/>
+        <Route path="/" element={ <ContentContainer><Game /></ContentContainer> }/>
+        <Route path="/game" element={ <ContentContainer><Game /></ContentContainer> }/>
+        <Route path="/results" element={ <ContentContainer><Results /></ContentContainer> }/>
+        <Route path="/help" element={ <ContentContainer><Help /></ContentContainer> }/>
+        {
+          gameModes.map((mode) => { 
+            return <Route path={`/game/${mode.code}`} element={ <ContentContainer><Game mode={mode}/></ContentContainer> }/> 
+          })
+        }
       </Routes>
       <Footer />
     </div>

@@ -1,12 +1,11 @@
 /** @jsxImportSource @emotion/react */
-import React from "react";
 
-import mainCss from "./MainStyle";
 import { settings } from './config/defaults'
+import { gameType } from './gameType';
 
-const Game: React.FC = () => {
+const Game: React.FC<{mode?: gameType}> = ({mode}) => {
     return(
-        <div css={mainCss} data-testid='game'>
+        <div data-testid='game'>
             <h1>Game</h1>
         </div>
     );
