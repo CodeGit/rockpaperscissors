@@ -4,10 +4,11 @@ import { css } from "@emotion/react";
 import { settings } from './config/defaults'
 
 const styles = css({
-    minHeight: '10vh',
+    minHeight: '1vh',
     backgroundColor: 'darkolivegreen',
     width: '100%',
     color: 'white',
+    
 });
 
 const Footer: React.FC = () => {
