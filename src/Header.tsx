@@ -11,11 +11,11 @@ const styles = css({
 });
 
 const Header: React.FC = () => {
-    const mode = useContext(GameModeContext);
+    const { selectedMode } = useContext(GameModeContext);
 
     return(
         <div css={styles} data-testid='header'>
-                {mode.desc}
+                {selectedMode.desc}
         </div>
     );
 }

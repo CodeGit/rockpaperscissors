@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './assets/logo.svg';
 import ReactDOM from "react-dom/client";
 import { Routes, Route } from 'react-router-dom';
@@ -13,7 +13,20 @@ import Game from './Game';
 import Results from './Results';
 import Help from './Help';
 import ContentContainer from './Content';
-import { gameModes } from './gameType';
+import { gameModes, gameType } from './gameType';
+import { useCallback } from 'react';
+
+interface GameModeContextData {
+  selectedMode: gameType,
+  setSelectedMode: (selected: gameType) => void;
+};
+
+const gameModeContextDefault: GameModeContextData = {
+  selectedMode: gameModes[0],
+  setSelectedMode: () => null
+};
+
+export const GameModeContext = React.createContext<GameModeContextData>(gameModeContextDefault)
 
 const styles = css({
   textAlign: 'center',
@@ -24,13 +37,14 @@ const styles = css({
   fontSize: 'clamp(1rem, 2rem, 4rem)',
 });
 
-export const GameModeContext = React.createContext(gameModes[0])
-
 const App = () => {
+  const [selectedMode, setSelectedMode] = useState(gameModes[0]);
+  gameModeContextDefault.selectedMode = selectedMode;
+  gameModeContextDefault.setSelectedMode = setSelectedMode;
 
   return (
     <div css={styles}>
-      <GameModeContext.Provider value={gameModes[0]}>
+      <GameModeContext.Provider value={gameModeContextDefault}>
         <Header />
         <RPSAppBar />
         <Routes>
