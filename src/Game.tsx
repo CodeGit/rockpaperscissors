@@ -2,6 +2,7 @@
 import { gameType, gameModes } from './gameType';
 import { GameModeContext } from './App';
 import { useContext } from 'react';
+import ActionButton from './components/ActionButton';
 
 
 const Game: React.FC<{mode?: gameType}> = ({mode}) => {
@@ -11,7 +12,7 @@ const Game: React.FC<{mode?: gameType}> = ({mode}) => {
 
     return(
         <div data-testid='game'>
-            <h1>{selectedMode.desc}</h1>
+            
         </div>
     );
 }
