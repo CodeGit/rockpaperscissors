@@ -14,7 +14,6 @@ import Results from './Results';
 import Help from './Help';
 import ContentContainer from './Content';
 import { gameModes, gameType } from './gameType';
-import { useCallback } from 'react';
 
 interface GameModeContextData {
   selectedMode: gameType,
@@ -34,7 +33,8 @@ const styles = css({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'flex-start',
-  fontSize: 'clamp(1rem, 2rem, 4rem)',
+  fontSize: 'clamp(1rem, calc(1em + 2vw), 4rem)',
+  //fontSize: "calc(1em + 2vw)",
 });
 
 const App = () => {
