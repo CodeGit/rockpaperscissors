@@ -8,28 +8,32 @@ import LizardLogo from "../assets/lizard.svg";
 import SpockLogo from "../assets/spock.svg";
 import { css } from "@mui/material";
 
-import PropTypes, { string } from "prop-types";
+interface Action {
+    name: string,
+    icon: string,
+};
+
+interface ActionProps {
+    action: Action, 
+    selected: boolean,
+    toggleSelected: () => void,
+};
 
 const styles = css({
     display: "flex",
     flexDirection: 'column',
     alignItems: 'center',
     textAlign: 'center',
-});
-
-const labelStyles = css({
-    fontSize: "4vw",
+    fontSize: 'clamp(1em, calc(1em + 2vw), 3em)',
+    width: 'fit-content',
+    textTransform: 'none',
+    color: '7CA0DC',
 });
 
 const imgStyles = css({
-    height: "15vh",
-    width: "15vw",
+    height: "clamp(1vh, calc(1em + 13vh), 30vh)",
+    width: "clamp(1vw, calc(1em + min-content), 30vw)",
 });
-
-export interface Action {
-    name: string,
-    icon: string,
-};
 
 export const RockAction= {name: "Rock", icon: RockLogo};
 export const PaperAction = {name: "Paper", icon: PaperLogo};
@@ -37,18 +41,16 @@ export const ScissorsAction = {name: "Scissors", icon: ScissorsLogo};
 export const LizardAction = {name: "Lizard", icon: LizardLogo};
 export const SpockAction = {name: "Spock", icon: SpockLogo};
 
-const rpsActions = [RockAction, PaperAction, ScissorsAction];
-const rpslsActions = [RockAction, PaperAction, ScissorsAction, LizardAction, SpockAction];
+export const rpsGameActions = [RockAction, PaperAction, ScissorsAction];
+export const rpslsGameActions = [RockAction, PaperAction, ScissorsAction, LizardAction, SpockAction];
 
-const ActionButton: React.FC<{action: Action, onClick: Function}> = ({action, onClick}) => {
-    console.log(`Action ${action.name}`);
+const ActionButton: React.FC<ActionProps> = ({action, selected, toggleSelected}) => {
+    console.log(`State = ${selected}`)
     return (
-        <div css={styles}>
-            <Button>
+            <Button css={styles} onClick={toggleSelected}>
                 <img src={action.icon} css={imgStyles}/>
+                <span>{action.name}</span>
             </Button>
-            <span css={labelStyles}>{action.name}</span>
-        </div>
     );
 }
 
