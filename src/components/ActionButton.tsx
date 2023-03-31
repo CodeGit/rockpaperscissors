@@ -13,7 +13,7 @@ interface Action {
     icon: string,
 };
 
-interface ActionProps {
+export interface ActionProps {
     action: Action, 
     selected: boolean,
     toggleSelected: () => void,
