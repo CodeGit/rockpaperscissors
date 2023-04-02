@@ -1,6 +1,6 @@
 import { JSX } from "@emotion/react/jsx-runtime";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import ActionButton, { ActionProps, RockAction, PaperAction, ScissorsAction, LizardAction, SpockAction }  from "./ActionButton";
+import ActionButton, { ActionProps, ActionType }  from "./ActionButton";
 
 export default {
     title: "Action Button",
@@ -11,7 +11,7 @@ const Template:ComponentStory<typeof ActionButton> = (args) => <ActionButton {..
 let rockSelected = false;
 export const Rock = Template.bind({});
 Rock.args = {
-    action: RockAction,
+    action: ActionType.Rock,
     selected: rockSelected,
     toggleSelected : () => {rockSelected = rockSelected ? false : true}
 };
@@ -19,7 +19,7 @@ Rock.args = {
 let  paperSelected = false;
 export const Paper = Template.bind({});
 Paper.args = {
-    action: PaperAction,
+    action: ActionType.Paper,
     selected: paperSelected,
     toggleSelected : () => {paperSelected = paperSelected ? false : true}
 };
@@ -27,7 +27,7 @@ Paper.args = {
 let  scissorsSelected = false;
 export const Scissors = Template.bind({});
 Scissors.args = {
-    action: ScissorsAction,
+    action: ActionType.Scissors,
     selected: scissorsSelected,
     toggleSelected : () => {scissorsSelected = scissorsSelected ? false : true}
 };
@@ -35,7 +35,7 @@ Scissors.args = {
 let  lizardSelected = false;
 export const Lizard = Template.bind({});
 Lizard.args = {
-    action: LizardAction,
+    action: ActionType.Lizard,
     selected: lizardSelected,
     toggleSelected : () => {lizardSelected = lizardSelected ? false : true}
 };
@@ -43,7 +43,7 @@ Lizard.args = {
 let spockSelected = false;
 export const Spock = Template.bind({});
 Spock.args = {
-    action: SpockAction,
+    action: ActionType.Spock,
     selected: spockSelected,
     toggleSelected : () => {spockSelected = spockSelected ? false : true}
 };

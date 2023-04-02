@@ -1,20 +1,23 @@
 /** @jsxImportSource @emotion/react */
-import React from "react";
+import React, { ReactComponentElement } from "react";
 import { Button, IconButton } from "@mui/material";
-import RockLogo from "../assets/rock.svg";
-import PaperLogo from "../assets/paper.svg";
-import ScissorsLogo from "../assets/scissors.svg";
-import LizardLogo from "../assets/lizard.svg";
-import SpockLogo from "../assets/spock.svg";
+import { ReactComponent as RockLogo } from "../assets/rock-outline.svg";
+import { ReactComponent as PaperLogo } from "../assets/paper-outline.svg";
+import { ReactComponent as ScissorsLogo } from "../assets/scissors-outline.svg";
+import { ReactComponent as LizardLogo } from "../assets/lizard-outline.svg";
+import { ReactComponent as SpockLogo } from "../assets/spock-outline.svg";
 import { css } from "@mui/material";
 
-interface Action {
-    name: string,
-    icon: string,
-};
+export enum ActionType {
+    Rock = "Rock", 
+    Paper = "Paper", 
+    Scissors = "Scissors", 
+    Lizard = "Lizard", 
+    Spock = "Spock",
+}
 
 export interface ActionProps {
-    action: Action, 
+    action: ActionType, 
     selected: boolean,
     toggleSelected: () => void,
 };
@@ -28,6 +31,7 @@ const styles = css({
     width: 'fit-content',
     textTransform: 'none',
     color: '7CA0DC',
+    height: "1vh)",
 });
 
 const imgStyles = css({
@@ -35,21 +39,32 @@ const imgStyles = css({
     width: "clamp(1vw, calc(1em + min-content), 30vw)",
 });
 
-export const RockAction= {name: "Rock", icon: RockLogo};
-export const PaperAction = {name: "Paper", icon: PaperLogo};
-export const ScissorsAction = {name: "Scissors", icon: ScissorsLogo};
-export const LizardAction = {name: "Lizard", icon: LizardLogo};
-export const SpockAction = {name: "Spock", icon: SpockLogo};
-
-export const rpsGameActions = [RockAction, PaperAction, ScissorsAction];
-export const rpslsGameActions = [RockAction, PaperAction, ScissorsAction, LizardAction, SpockAction];
+export const rpsGameActions = [ActionType.Rock, ActionType.Paper, ActionType.Scissors];
+export const rpslsGameActions = rpsGameActions.concat(ActionType.Lizard, ActionType.Spock) ;
 
 const ActionButton: React.FC<ActionProps> = ({action, selected, toggleSelected}) => {
-    console.log(`State = ${selected}`)
+    let Icon; 
+    switch(action) {
+        case ActionType.Rock:
+            Icon = RockLogo;
+            break;
+        case ActionType.Paper:
+            Icon = PaperLogo;
+            break;
+        case ActionType.Scissors:
+            Icon = ScissorsLogo;
+            break;
+        case ActionType.Lizard:
+            Icon = LizardLogo;
+            break;
+        case ActionType.Spock:
+            Icon = SpockLogo;
+            break;
+    }
     return (
             <Button css={styles} onClick={toggleSelected}>
-                <img src={action.icon} css={imgStyles}/>
-                <span>{action.name}</span>
+                <Icon />
+                <span>{action}</span>
             </Button>
     );
 }

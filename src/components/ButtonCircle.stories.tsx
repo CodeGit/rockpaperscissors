@@ -7,7 +7,7 @@ export default {
 }
 
 const rpsButtons = rpsGameActions.map(
-    x => (<ActionButton action={x} selected={false} toggleSelected={() => {console.log(`Clicked ${x.name}`)}} />)
+    x => (<ActionButton action={x} selected={false} toggleSelected={() => {console.log(`Clicked ${x}`)}} />)
 );
 
 export const rockPaperScissors = <ButtonCircle buttons={rpsButtons} /> 
