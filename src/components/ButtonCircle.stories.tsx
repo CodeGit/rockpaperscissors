@@ -1,13 +1,10 @@
-import ActionButton, { rpsGameActions, rpslsGameActions } from "./ActionButton";
+import ActionButton from "./ActionButton";
 import ButtonCircle from "./ButtonCircle";
+import { GameMode } from "../gameType";
 
 export default {
     title: "Button Circle",
     component: ButtonCircle
 }
 
-const rpsButtons = rpsGameActions.map(
-    x => (<ActionButton action={x} selected={false} toggleSelected={() => {console.log(`Clicked ${x}`)}} />)
-);
-
-export const rockPaperScissors = <ButtonCircle buttons={rpsButtons} /> 
+export const rockPaperScissors = <ButtonCircle mode={GameMode.RPS} /> 

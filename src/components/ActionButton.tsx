@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React, { ReactComponentElement } from "react";
-import { Button } from "@mui/material";
+import React from "react";
 import { ReactComponent as RockLogo } from "../assets/rock-outline.svg";
 import { ReactComponent as PaperLogo } from "../assets/paper-outline.svg";
 import { ReactComponent as ScissorsLogo } from "../assets/scissors-outline.svg";
@@ -33,6 +32,7 @@ const styles = css({
     color: '7CA0DC',
     height: "1vh)",
     backgroundColor: "rgba(0, 0, 0, 0)",
+    margin: "0.3em",
 });
 
 const roundButtonStyles = css({

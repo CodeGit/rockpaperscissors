@@ -13,11 +13,11 @@ import Game from './Game';
 import Results from './Results';
 import Help from './Help';
 import ContentContainer from './Content';
-import { gameModes, gameType } from './gameType';
+import { gameModes, GameMode } from './gameType';
 
 interface GameModeContextData {
-  selectedMode: gameType,
-  setSelectedMode: (selected: gameType) => void;
+  selectedMode: GameMode,
+  setSelectedMode: (selected: GameMode) => void;
 };
 
 const gameModeContextDefault: GameModeContextData = {
@@ -55,7 +55,7 @@ const App = () => {
           {
             gameModes.map((mode) => { 
               return(
-                <Route path={`/game/${mode.code}`} element={ <ContentContainer><Game mode={mode}/></ContentContainer> }/> 
+                <Route path={`/game/${mode}`} element={ <ContentContainer><Game mode={mode}/></ContentContainer> }/> 
             )})
           }
         </Routes>

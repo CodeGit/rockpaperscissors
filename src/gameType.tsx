@@ -1,15 +1,11 @@
-export type gameType = {
-    code: string;
-    desc: string;
-};
+export enum GameMode {
+    RPS = "Rock Paper Scissors",
+    RPSLS = "Rock Paper Scissors Lizard Spock"
+}
 
-export const gameModes: Array<gameType> = [
-    {
-        code: "rps",
-        desc: "Rock Paper Scissors"
-    },
-    {
-        code: "rpsls",
-        desc: "Rock Paper Scissors Lizard Spock"
-    }
+export const gameModes: Array<GameMode> = [
+    GameMode.RPS,
+    GameMode.RPSLS
 ];
+
+export default GameMode;

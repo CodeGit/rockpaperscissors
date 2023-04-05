@@ -15,7 +15,7 @@ const Header: React.FC = () => {
 
     return(
         <div css={styles} data-testid='header'>
-                {selectedMode.desc}
+                {selectedMode}
         </div>
     );
 }
