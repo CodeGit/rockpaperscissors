@@ -10,8 +10,11 @@ type node = {
 const styles = css({
     flexGrow:1,
     width:"100%",
+    height: "fit-content",
     background: "white",
-    minHeight: '86vh',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   });
 
   const ContentContainer = (props:node) => {

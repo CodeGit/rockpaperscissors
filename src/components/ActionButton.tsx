@@ -21,7 +21,7 @@ export interface ActionProps {
     toggleSelected: () => void,
 };
 
-export const buttonDiameter = 20;
+export const buttonDiameter = 15;
 
 const styles = css({
     position: "relative",
@@ -78,7 +78,7 @@ const svgStyles = css({
     width: `${buttonDiameter / 1.75}rem`,
 });
 
-export const rpsGameActions = [ActionType.Rock, ActionType.Paper, ActionType.Scissors];
+export const rpsGameActions = [ActionType.Rock, ActionType.Scissors, ActionType.Paper];
 export const rpslsGameActions = rpsGameActions.concat(ActionType.Lizard, ActionType.Spock) ;
 
 const ActionButton: React.FC<ActionProps> = ({action, selected, toggleSelected}) => {
