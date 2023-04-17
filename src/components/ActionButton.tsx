@@ -21,12 +21,13 @@ export interface ActionProps {
     toggleSelected: () => void,
 };
 
+export const buttonDiameter = 25;
+
 const styles = css({
-    display: "flex",
-    flexDirection: 'column',
+    position: "relative",
     alignItems: 'center',
     textAlign: 'center',
-    fontSize: 'clamp(1em, calc(1em + 2vw), 3em)',
+    fontSize: `${buttonDiameter}rem`,
     width: 'fit-content',
     textTransform: 'none',
     color: '7CA0DC',
@@ -36,8 +37,8 @@ const styles = css({
 });
 
 const roundButtonStyles = css({
-    height: "clamp(1em, calc(3.5em), 10em)",
-    width: "clamp(1em, calc(3.5em), 10em)",
+    height: `${buttonDiameter / 1.3}rem`,
+    width: `${buttonDiameter / 1.3}rem`,
     top: "50%",
     left: "50%",
     borderRadius: "50%",
@@ -78,9 +79,11 @@ const unselectedRoundButtonStyles = css({
 }, roundButtonStyles);
 
 const svgStyles = css({
-    height: "clamp(1em, calc(2.5em), 10em)",
-    width: "clamp(1em, calc(2.5em), 10em)",
-    padding: "0.5em",
+    height: `${buttonDiameter / 1.75}rem`,
+    width: `${buttonDiameter / 1.75}rem`,
+    position: "absolute",
+    top: `${buttonDiameter * 0.12}rem`,
+    left: `${buttonDiameter * 0.12}rem`,
 });
 
 export const rpsGameActions = [ActionType.Rock, ActionType.Paper, ActionType.Scissors];
