@@ -1,9 +1,10 @@
 /** @jsxImportSource @emotion/react */
-import React, { ReactElement, ReactNode, useState } from "react";
+import React, { ReactElement, ReactNode, useEffect, useState } from "react";
 import { css } from "@mui/material";
 import ActionButton, {rpsGameActions, rpslsGameActions, ActionType, buttonDiameter} from "./ActionButton";
 import { GameMode } from "../gameType";
 import { SerializedStyles } from "@emotion/react";
+import { number } from "prop-types";
 
 const box = {
     height: buttonDiameter * 3,
@@ -81,25 +82,34 @@ const rpslsStyles = [
 interface  CircleProps {
     mode: GameMode
 }
-const ButtonCircle: React.FC<CircleProps> = ({mode}) => {
-    const [buttonClicked, setButtonclicked] = useState(false);
-    const [selectedButton, setSelectedButton] = useState(ActionType.Rock);
-
-    const positionButton = (button: JSX.Element, index: number, buttonStyles: SerializedStyles[]) => {
-        console.log("positionButton");
-        console.log(rpsStyles[index]);
-        return (<div css={buttonStyles[index]} key={`${index}-button`}>{button}</div>)
-    };
-    
+const ButtonCircle: React.FC<CircleProps> = ({mode=GameMode.RPS}) => {
+    const [selectedButton, setSelectedButton] = useState(-1);
     let buttons: JSX.Element[];
     let buttonStyles: SerializedStyles[];
+    
+    useEffect(() => {
+        console.log(`Selected button ${selectedButton}`);
+    }, [selectedButton]);
+
+    const positionButton = (button: JSX.Element, index: number, buttonStyles: SerializedStyles[]) => {
+        // console.log("positionButton");
+        // console.log(rpsStyles[index]);
+        return (<div css={buttonStyles[index]} key={`${index}-button`}>{button}</div>)
+    };
+
+    const setActiveButton = (index:number) => {
+        setSelectedButton(index);
+    };
+
+    const createButtons = (action:ActionType, index:number) => <ActionButton data-test-id={action} action={action} selected={index === selectedButton} toggleSelected={() => {setActiveButton(index)}} />;
+
     switch(mode) {
         case GameMode.RPS:
-            buttons = rpsGameActions.map(action => <ActionButton data-test-id={action} action={action} selected={false} toggleSelected={() => {}} />);
+            buttons = rpsGameActions.map(createButtons);
             buttonStyles = rpsStyles;
             break;
         case GameMode.RPSLS:
-            buttons = rpslsGameActions.map(action => <ActionButton  data-test-id={action} action={action} selected={false} toggleSelected={() => {}} />);
+            buttons = rpslsGameActions.map(createButtons);
             buttonStyles = rpslsStyles;
             break;
     }

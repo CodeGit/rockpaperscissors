@@ -43,7 +43,7 @@ const selectedRoundButtonStyles = css({
     boxShadow: 
     "-1px -1px 10px rgba(255, 255, 255, 1), 1px 1px 10px rgba(70, 70, 70, 0.5)",
     '&: hover': {
-        background: "rgba(135, 206, 235, 0.4)",
+        background: "rgba(135, 206, 235, 1)",
         transition: "all 0.4s ease"
     },
     '&: active': {
@@ -59,7 +59,7 @@ const unselectedRoundButtonStyles = css({
     "-10px -10px 10px rgba(255, 255, 255, 1), 10px 10px 10px rgba(70, 70, 70, 0.5)",
     backgroundColor: "#ffffff",
     '&: hover': {
-        background: "rgba(135, 206, 235, 0.4)",
+        background: "rgba(135, 206, 235, 1)",
         transition: "all 0.4s ease"
     },
     '&: active': {
@@ -111,13 +111,19 @@ const ActionButton: React.FC<ActionProps> = ({action, selected, toggleSelected})
         buttonStyles = unselectedRoundButtonStyles;
         strokeColour = 'black';
     }
+
+    const handleClick = (e:React.MouseEvent) => {
+        e.preventDefault();
+        toggleSelected();
+    }
+
     return (
             <div css={styles}>
                 <div 
                     css={buttonStyles} 
-                    onClick={toggleSelected} 
+                    onClick={handleClick} 
                     aria-label={action}>
-                    <Icon css={svgStyles} stroke={strokeColour} onClick={toggleSelected}/>
+                    <Icon css={svgStyles} stroke={strokeColour}/>
                 </div>
             </div>
     );
