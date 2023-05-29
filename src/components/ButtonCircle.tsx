@@ -7,22 +7,17 @@ import { SerializedStyles } from "@emotion/react";
 
 const box = {
     height: buttonDiameter * 3,
-    width: buttonDiameter * 3
+    width: buttonDiameter * 3,
 }
 
-const stroke = 2;
+const outerStyles = css({
+    width: `${box.width * 1.2}rem`,
+    height: `${box.height * 1.2}rem`,
+    padding: "1rem",
+});
 
-const circle = {
-    height: box.height/2,
-    width: box.width/2,
-    radius: box.height/2 - (stroke),
-    stroke: stroke,
-}
-
-const styles = css({
+const innerStyles = css({
     position: "relative",
-    width: "fit-content",
-    height: "fit-content",
     top: "0",
     left: "0",
 });
@@ -91,23 +86,19 @@ const ButtonCircle: React.FC<CircleProps> = ({mode=GameMode.RPS}) => {
         console.log(`Selected button ${selectedButton}`);
     }, [selectedButton]);
 
-    const positionButton = (button: JSX.Element, index: number, numButtons: number, buttonDiameter: number, box: {height: number, width: number}, defaultButtonStyle: SerializedStyles, buttonStyles: SerializedStyles[]) => {
+    const positionButton = (button: JSX.Element, index: number, numButtons: number, buttonDiameter: number, box: {height: number, width: number}, defaultButtonStyle: SerializedStyles) => {
         const r = box.height/2;
-        const a = box.height/2;
-        const b = box.width/2;
         
         const angle = ((Math.PI*2)/numButtons) * index;
-        // calculate x and y for first quadrant of circle
         let x = r * Math.cos(angle);
         let y = r * Math.sin(angle);
-        
         const top = (box.height/2) - x;
-        const left = (box.width/2) + y - (buttonDiameter/2);
+        const left = (box.width/2) + y - (buttonDiameter / 2);
         
-        //console.log(`${index}: angle=${(angle).toFixed(2)} raw-x=${x.toFixed(2)} raw-y=${y.toFixed(2)} h=${box.height} w=${box.width} d=${buttonDiameter} top=${top.toFixed(2)} left=${left.toFixed(2)}`);
+        console.log(`${index}: angle=${(angle).toFixed(2)} raw-x=${x.toFixed(2)} raw-y=${y.toFixed(2)} h=${box.height} w=${box.width} d=${buttonDiameter} top=${top.toFixed(2)} left=${left.toFixed(2)}`);
         const style = css({
             top: `${top}rem`,
-            left: `${left}rem`
+            left: `${left}rem`,
         }, defaultButtonStyle);
         return (<div css={style} key={`${index}-button`}>{button}</div>)
     };
@@ -129,10 +120,12 @@ const ButtonCircle: React.FC<CircleProps> = ({mode=GameMode.RPS}) => {
             break;
     }
     return (
-        <div data-test-id="circle-container" css={styles}>
-            <svg css={svgStyles} data-test-id="circle-svg">
-            </svg>
-            { buttons.map((button, index) => positionButton(button, index, buttons.length, buttonDiameter, box, defaultButtonStyle, buttonStyles) ) }
+        <div css={outerStyles}>
+            <div data-test-id="circle-container" css={innerStyles}>
+                <svg css={svgStyles} data-test-id="circle-svg">
+                </svg>
+                { buttons.map((button, index) => positionButton(button, index, buttons.length, buttonDiameter, box, defaultButtonStyle) ) }
+            </div>
         </div>
         
     );
