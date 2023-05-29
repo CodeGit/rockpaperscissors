@@ -104,7 +104,7 @@ const ButtonCircle: React.FC<CircleProps> = ({mode=GameMode.RPS}) => {
         const top = (box.height/2) - x;
         const left = (box.width/2) + y - (buttonDiameter/2);
         
-        console.log(`${index}: angle=${(angle).toFixed(2)} raw-x=${x.toFixed(2)} raw-y=${y.toFixed(2)} h=${box.height} w=${box.width} d=${buttonDiameter} top=${top.toFixed(2)} left=${left.toFixed(2)}`);
+        //console.log(`${index}: angle=${(angle).toFixed(2)} raw-x=${x.toFixed(2)} raw-y=${y.toFixed(2)} h=${box.height} w=${box.width} d=${buttonDiameter} top=${top.toFixed(2)} left=${left.toFixed(2)}`);
         const style = css({
             top: `${top}rem`,
             left: `${left}rem`
